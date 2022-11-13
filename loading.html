@@ -1,0 +1,54 @@
+{% extends "base.html" %} {% block title %} Tạo phụ đề cho video {% endblock %}
+{% block content %} {% if session['user'] %}
+<a href="/" class="href"
+  ><i class="fa fa-home" aria-hidden="true"></i>Trang chủ</a
+>
+<div class="profile">
+  <div class="account">
+    <span><i class="fa fa-user" aria-hidden="true"></i></span>
+    <p class="name">Chào {{session['user']}}</p>
+  </div>
+  <a href="/lichsu">
+    <i class="fa fa-history"></i>
+    Lịch sử</a
+  >
+  <a href="/dangxuat">
+    <i class="fa fa-sign-out"></i>
+    Đăng xuất</a
+  >
+</div>
+{% endif %}
+
+<div class="loading">
+  <div class="music-waves-2">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<div class="flip-animation">
+  <span>T</span>
+  <span>h</span>
+  <span>a</span>
+  <span>n</span>
+  <span>k</span>
+  <span>s</span>
+  <span>!</span>
+</div>
+
+{% with messages = get_flashed_messages() %} {% if messages %} {% endif %} {%
+endwith %}
+<div class="center">
+  <video width="600" height="240" controls>
+    <source src={{ url_for('static',filename=filename) }} type="video/mp4" />
+  </video>
+  <form method="POST" enctype="multipart/form-data">
+    {{down.hidden_tag()}} {{down.submit2()}}
+  </form>
+</div>
+{% endblock %}

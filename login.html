@@ -1,0 +1,28 @@
+{% extends "base.html" %} {% block title %} Tạo phụ đề cho video {% endblock %}
+{% block content %} {% with messages = get_flashed_messages() %} {% if messages
+%}
+<ul class="flash">
+  {% for message in messages %}
+
+  <li>{{ message }}</li>
+  {% endfor %}
+</ul>
+{% endif %} {% endwith %}
+<div class="center">
+  <div class="login">
+    <h1>Đăng nhập vào hệ thống</h1>
+    <form method="POST">
+      <div class="form-group">
+        <p>Tên đăng nhập</p>
+        <input type="text" name="username" id="username" required />
+      </div>
+      <div class="form-group">
+        <p>Mật khẩu</p>
+        <input type="password" name="password" id="password" required />
+      </div>
+      <input type="submit" value="Đăng nhập" name="login" class="dangnhap" />
+    </form>
+  </div>
+</div>
+
+{% endblock %}

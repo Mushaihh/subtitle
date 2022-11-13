@@ -1,0 +1,54 @@
+{% extends "base.html" %} {% block title %} Tạo phụ đề cho video {% endblock %}
+{% block content %}
+<div>
+  <a href="/" class="href"
+    ><i class="fa fa-home" aria-hidden="true"></i>Trang chủ</a
+  >
+  <!-- {{message}} -->
+  {% if session['user'] %}
+  <div class="profile">
+    <div class="account">
+      <span><i class="fa fa-user" aria-hidden="true"></i></span>
+      <p class="name">{{session['user']}}</p>
+    </div>
+    <a href="/lichsu">
+      <i class="fa fa-history"></i>
+      Lịch sử</a
+    >
+    <a href="/dangxuat">
+      <i class="fa fa-sign-out"></i>
+      Đăng xuất</a
+    >
+  </div>
+  {% endif %}
+  <h3 class="">Lịch sử tạo phụ đề</h3>
+
+  {% }
+  <div class="history">
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Tên video</td>
+          <th>Ngôn ngữ gốc</td>
+          <th>Ngôn ngữ đích</td>
+          <th>Xem</td>
+        </tr>
+      </thead>
+      <tbody>
+        {% for file in data %}
+        <tr>
+          <td>{{file['ten_video']}}</td>
+          <td class="text-center">{{file['lang_in']}}</td>
+          <td class="text-center">{{file['lang_out']}}</td>
+          <th>
+            <a href="/loading/{{file['ten_video']}}"
+              >Xem <i class="fa fa-eye" aria-hidden="true"></i
+            ></a>
+          </th>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
