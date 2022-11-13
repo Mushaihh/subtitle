@@ -112,7 +112,13 @@ def index():
         cursor.execute("SELECT * FROM user WHERE username=%s",user)
         usernames = cursor.fetchall()
 
-
+        
+        # BichHuyen B1910648
+        if language_in == language_out:
+            os.system('python3 wav.py -i {} -s {}'.format(PATH+file.filename,language_in))
+        else:
+            os.system('python3 wav.py -i {} -s {} -d {}'.format(PATH+file.filename,language_in,language_out)) 
+        
         
         
         
